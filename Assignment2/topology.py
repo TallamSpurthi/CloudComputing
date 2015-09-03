@@ -7,6 +7,7 @@ from mininet.log import setLogLevel
 import sys
 from mininet.node import Controller, RemoteController
 from mininet.cli import CLI
+from mininet.link import TCIntf, TCLink
 
 class create_Topology(Topo):
 	def build(self, n = 2, N = 4):
@@ -21,18 +22,18 @@ class create_Topology(Topo):
 			switch = ('s%s'%(i+1))
 			for j in range(ratio):
 				host = self.addHost('h%s'%I)
-				self.addLink(host, switch)
+				self.addLink(host, switch, bw = ((I%2) + 1))
 				I += 1
 		for i in range(remaining):
 			host = self.addHost('h%s'%I)
-			self.addLink(host, ('s%s'%(i+1)))
+			self.addLink(host, ('s%s'%(i+1)), bw = ((I%2)+1))
 			I += 1
 
 if __name__ == '__main__':
 	setLogLevel('info')
 	nswitches = int(sys.argv[1])
 	nhosts = int(sys.argv[2])
-	net = Mininet(topo=create_Topology(nswitches, nhosts), controller=RemoteController)
+	net = Mininet(topo=create_Topology(nswitches, nhosts), link = TCLink, controller=RemoteController)
 	net.start()
 	net.addController('c0',controller=RemoteController, ip='127.0.0.1', port=6633)
 	for x in xrange(nhosts):

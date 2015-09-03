@@ -1,0 +1,3 @@
+First Run The command:
+"sudo python pox.py forwarding.hub" after going to the directory where pox.py is located.
+Then in other terminal, run this topology.py file using: sudo python topology.py "nswitches" "nhosts"
