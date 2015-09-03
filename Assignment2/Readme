@@ -1,3 +1,18 @@
-First Run The command:
-"sudo python pox.py forwarding.hub" after going to the directory where pox.py is located.
-Then in other terminal, run this topology.py file using: sudo python topology.py "nswitches" "nhosts"
+
+In this case, to make the pinging possible between the hosts, we are using the remote POX controller.
+-----------------------------------------------------------------------------------------------------
+
+So, first go into the directory where 'pox' directory is located.
+In that folder, you will find the pox.py file.
+Run the command: 
+
+1. sudo python pox.py forwarding.l2_learning openflow.discovery --eat-early-packets openflow.spanning_tree --no-flood --hold-down 
+
+----------------------------------------------------------------------------------------------------------------------------------\
+Now in the new terminal, go to the directory where code is present.
+You should give no of hosts, switches as CommandLine Args.
+
+:: The implemented topology is "MeshTopology"
+Run the command:
+
+2. sudo python topology.py "nswitches" "nhosts"
