@@ -1,1 +1,1 @@
-# 201301241_cloud_assignments
+# cloud computing course assignments
